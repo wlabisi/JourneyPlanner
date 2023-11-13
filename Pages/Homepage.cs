@@ -8,7 +8,7 @@ namespace TFL.Pages
     {
         private IWebDriver driver;
 
-        public Homepage(IWebDriver driver, JavaScriptHelpers javaScriptExecutor)
+        public Homepage(IWebDriver driver)
         {
             this.driver = driver;
            
@@ -24,6 +24,11 @@ namespace TFL.Pages
         private IWebElement ArrivingBtn => driver.FindElement(By.XPath("//*[@for='arriving']"));
         private IWebElement RecentJourneyBtn => driver.FindElement(By.XPath("//*[text()='Recents']"));
 
+        private void JavaScriptExecutor(IWebElement element)
+        {
+            new JavaScriptHelpers(driver).JavaScriptClick(element);
+        }
+
         public void FillInFromTextbox(string value)
         {
             FromField.SendKeys(value);
@@ -34,12 +39,12 @@ namespace TFL.Pages
             ToField.SendKeys(value);
             ToField.SendKeys(Keys.Tab);
         }
-        public void PlanJourney() => new JavaScriptHelpers(driver).JavaScriptClick(PlanJourneyBtn);
+       
+        public void PlanJourney() => JavaScriptExecutor(PlanJourneyBtn);
         public void AcceptCookie() => AcceptCookieBtn.Click();
-        public void ChangeTime() => new JavaScriptHelpers(driver).JavaScriptClick(ChangeTimeLink);
-
-        public void Arriving() => new JavaScriptHelpers(driver).JavaScriptClick(ArrivingBtn);
-        public void RecentsBtn() => new JavaScriptHelpers(driver).JavaScriptClick(RecentJourneyBtn);
+        public void ChangeTime() => JavaScriptExecutor(ChangeTimeLink);
+        public void Arriving() => JavaScriptExecutor(ArrivingBtn);
+        public void RecentsBtn() => JavaScriptExecutor(RecentJourneyBtn);
       
         public bool IsFromFieldError()
         {
