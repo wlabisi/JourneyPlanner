@@ -19,6 +19,7 @@ namespace TFL.Pages
         private IWebElement EditJourneyLink => driver.FindElement(By.ClassName("edit-journey"));
         private IWebElement SelectDateFromLIst => driver.FindElement(By.CssSelector("[id='Date']"));
         private IWebElement UpdateJourneyBtn => driver.FindElement(By.CssSelector("[id='plan-journey-button']"));
+        private IWebElement HomePageBtn => driver.FindElement(By.XPath("//*[text()='Home']"));
 
         public bool IsJourneyResultDisplayed()
         {
@@ -53,6 +54,9 @@ namespace TFL.Pages
             dropElement.SelectByValue(formattedDate);
         }
         public void UpdateJourney() => UpdateJourneyBtn.Click();
+
+        public void HomePage() => HomePageBtn.Click();
+
     }
 
     

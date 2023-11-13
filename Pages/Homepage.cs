@@ -7,9 +7,11 @@ namespace TFL.Pages
     internal class Homepage
     {
         private IWebDriver driver;
-        public Homepage(IWebDriver driver)
+
+        public Homepage(IWebDriver driver, JavaScriptHelpers javaScriptExecutor)
         {
             this.driver = driver;
+           
         }
 
         private IWebElement FromField => driver.FindElement(By.CssSelector("[data-placeholder-blur='From']"));
@@ -20,6 +22,7 @@ namespace TFL.Pages
         private IWebElement AcceptCookieBtn => driver.FindElement(By.XPath("//*[text()='Accept all cookies']"));
         private IWebElement ChangeTimeLink => driver.FindElement(By.CssSelector("[class='change-departure-time']"));
         private IWebElement ArrivingBtn => driver.FindElement(By.XPath("//*[@for='arriving']"));
+        private IWebElement RecentJourneyBtn => driver.FindElement(By.XPath("//*[text()='Recents']"));
 
         public void FillInFromTextbox(string value)
         {
@@ -36,7 +39,8 @@ namespace TFL.Pages
         public void ChangeTime() => new JavaScriptHelpers(driver).JavaScriptClick(ChangeTimeLink);
 
         public void Arriving() => new JavaScriptHelpers(driver).JavaScriptClick(ArrivingBtn);
-
+        public void RecentsBtn() => new JavaScriptHelpers(driver).JavaScriptClick(RecentJourneyBtn);
+      
         public bool IsFromFieldError()
         {
             try

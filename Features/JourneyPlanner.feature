@@ -45,6 +45,14 @@ Scenario: Verify that a journey can be amended by using the “Edit Journey” b
 	Then I should be able to click on the edit journey link on the journey results page
 	And I select a new journey date from date drop down box
 	And click update journey
+
+@Regression
+Scenario: Verify that the “Recents” tab on the widget displays a list of recently planned journeys
+	When enter 'SW2 3JZ' in the From field
+	And enter 'SW16 4UP' in the To field
+	And I click plan journey
+	Then I should be able to navigate to the Journey Planner page after results are loaded
+	And I should be able to select the Recents tab to view recent journeys
 	
 	
 	

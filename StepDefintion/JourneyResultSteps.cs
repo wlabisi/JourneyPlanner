@@ -44,6 +44,12 @@ namespace TFL.StepDefintion
             journeyResultsPage.UpdateJourney();
         }
 
+        [Then(@"I should be able to navigate to the Journey Planner page after results are loaded")]
+        public void ThenIShouldBeAbleToNavigateToTheJourneyPlannerPageAfterResultsAreLoaded()
+        {
+            Assert.IsTrue(journeyResultsPage.IsJourneyResultDisplayed(), "Journey page is not loaded");
+            journeyResultsPage.HomePage();
+        }
 
     }
 }

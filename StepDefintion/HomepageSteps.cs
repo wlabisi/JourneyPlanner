@@ -61,5 +61,11 @@ namespace TFL.StepDefintion
         {
             homepage.Arriving();
         }
+
+        [Then(@"I should be able to select the Recents tab to view recent journeys")]
+        public void ThenIShouldBeAbleToSelectTheRecentsTabToViewRecentJourneys()
+        {
+            homepage.RecentsBtn();
+        }
     }
 }
