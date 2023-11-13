@@ -6,10 +6,10 @@ using TFL.Pages;
 namespace TFL.StepDefintion
 {
     [Binding]
-    internal class HamepageSteps
+    internal class HomePageSteps
     {
         private Homepage homepage;
-        public HamepageSteps(ObjectContainer objectContainer)
+        public HomePageSteps(ObjectContainer objectContainer)
         {
             homepage = objectContainer.Resolve<Homepage>();
         }
